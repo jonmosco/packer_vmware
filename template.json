@@ -1,0 +1,17 @@
+{
+  "builders": [{
+    "type": "vmware-iso",
+    "headless": "false",
+    "http_directory": "./kickstart",
+    "iso_url": "/Users/jmosco/iso/linux/CentOS-6.5-x86_64-minimal.iso",
+    "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
+    "iso_checksum_type": "md5",
+    "ssh_username": "root",
+    "shutdown_command": "shutdown -P now",
+    "vm_name": "packer-centos-6_5",
+    "boot_command": [
+      "<esc>",
+      "<wait>linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/packer-ks.cfg<enter>"
+      ]
+  }]
+}
