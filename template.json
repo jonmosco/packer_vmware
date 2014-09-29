@@ -1,5 +1,6 @@
 {
-  "builders": [{
+  "builders": [
+  {
     "type": "vmware-iso",
     "headless": "true",
     "http_directory": "./kickstart",
@@ -14,5 +15,11 @@
       "<esc>",
       "<wait>linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/packer-ks.cfg<enter>"
       ]
-  }]
+  }
+  ],
+    "post-processors": [
+    {
+      "type": "vagrant"
+    }
+  ]
 }
