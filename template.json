@@ -1,20 +1,9 @@
 {
-  "provisioners": [
-  {
-    "type": "shell",
-    "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
-    "scripts": [
-      "scripts/vmwaretools.sh",
-      "scripts/vagrant.sh",
-      "scripts/network.sh"
-    ]
-  }
-  ],
   "builders": [
   {
     "type": "vmware-iso",
     "guest_os_type": "linux",
-    "headless": "false",
+    "headless": "true",
     "http_directory": "./kickstart",
     "iso_url": "/Users/jmosco/iso/linux/CentOS-6.5-x86_64-bin-DVD1.iso",
     "iso_checksum": "83221db52687c7b857e65bfe60787838",
@@ -28,6 +17,17 @@
       "<esc>",
       "<wait>linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/packer-ks.cfg<enter>"
       ]
+  }
+  ],
+  "provisioners": [
+  {
+    "type": "shell",
+    "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+    "scripts": [
+      "scripts/vmwaretools.sh",
+      "scripts/vagrant.sh",
+      "scripts/network.sh"
+    ]
   }
   ],
     "post-processors": [
