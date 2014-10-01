@@ -5,7 +5,8 @@
     "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
     "scripts": [
       "scripts/vmwaretools.sh",
-      "scripts/vagrant.sh"
+      "scripts/vagrant.sh",
+      "scripts/network.sh"
     ]
   }
   ],
