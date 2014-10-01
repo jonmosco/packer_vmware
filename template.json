@@ -1,16 +1,29 @@
 {
+  "provisioners": [
+  {
+    "type": "shell",
+    "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+    "scripts": [
+      "scripts/vmwaretools.sh",
+      "scripts/vagrant.sh"
+      "scripts/network.sh"
+    ]
+  }
+  ],
   "builders": [
   {
     "type": "vmware-iso",
+    "guest_os_type": "linux",
     "headless": "true",
     "http_directory": "./kickstart",
-    "iso_url": "/Users/jmosco/iso/linux/CentOS-6.5-x86_64-minimal.iso",
-    "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
+    "iso_url": "/Users/jmosco/iso/linux/CentOS-6.5-x86_64-bin-DVD1.iso",
+    "iso_checksum": "83221db52687c7b857e65bfe60787838",
     "iso_checksum_type": "md5",
-    "ssh_username": "root",
+    "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "shutdown_command": "shutdown -P now",
+    "tools_upload_flavor": "linux",
     "vm_name": "packer-centos-6_5",
+    "shutdown_command": "/usr/bin/sudo /sbin/shutdown -P now",
     "boot_command": [
       "<esc>",
       "<wait>linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/packer-ks.cfg<enter>"
