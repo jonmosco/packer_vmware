@@ -13,7 +13,7 @@
   {
     "type": "vmware-iso",
     "guest_os_type": "linux",
-    "headless": "true",
+    "headless": "false",
     "http_directory": "./kickstart",
     "iso_url": "/Users/jmosco/iso/linux/CentOS-6.5-x86_64-bin-DVD1.iso",
     "iso_checksum": "83221db52687c7b857e65bfe60787838",
