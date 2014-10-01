@@ -12,3 +12,5 @@ chmod 0600 /home/vagrant/.ssh/authorized_keys
 chown -R vagrant /home/vagrant/.ssh
 
 echo "UseDNS no" >> /etc/ssh/sshd_config
+sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
+sed -i "s/^\(.*env_keep = \"\)/\1PATH /" /etc/sudoers
